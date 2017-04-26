@@ -47,8 +47,9 @@ public class UserMapperTest extends TestCase {
 	@Test
 	public void testLoadbyname() {
 		
-		User user = userMapper.loadbyname("test");
+		User user = userMapper.loadbyname("test1");
 		Assert.assertNotNull(user);
+		System.out.println(user.toString());
 	}
 	@Test
 	public void testList() {

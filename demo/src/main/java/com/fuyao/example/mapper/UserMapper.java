@@ -9,7 +9,7 @@ import com.fuyao.example.model.User;
 
 @Repository("userMapper")
 public interface UserMapper {
-    @DataSource("master")
+    //@DataSource("master")
     public void add(User user);
 
     @DataSource("master")
@@ -24,6 +24,6 @@ public interface UserMapper {
     @DataSource("master")
     public User loadbyname(String name);
     
-    @DataSource("slave")
+    //@DataSource("slave")
     public List<User> list();
 }
