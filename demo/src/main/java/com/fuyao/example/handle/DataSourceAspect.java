@@ -23,8 +23,7 @@ public class DataSourceAspect {
 	            Method m = classz.getMethod(method);
 	        	//Method m = ((MethodSignature) point.getSignature()).getMethod();
 	            if (m != null && m.isAnnotationPresent(DataSource.class)) {
-	                DataSource data = m
-	                        .getAnnotation(DataSource.class);
+	                DataSource data = m.getAnnotation(DataSource.class);
 	                DynamicDataSourceHolder.putDataSource(data.value());
 	                System.out.println(data.value());
 	            }
