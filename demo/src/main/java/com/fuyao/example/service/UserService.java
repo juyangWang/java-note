@@ -1,8 +1,8 @@
 package com.fuyao.example.service;
 
 import java.util.List;
+import java.util.Map;
 
-import com.fuyao.example.annotation.DataSource;
 import com.fuyao.example.model.User;
 
 public interface UserService {
@@ -12,5 +12,7 @@ public interface UserService {
 	
 	//@DataSource("slave")
 	List<User> find();
+	
+	List<User> find(Map<String,Object> param);
 
 }

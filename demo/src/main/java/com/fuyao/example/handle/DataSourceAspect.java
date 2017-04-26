@@ -18,10 +18,10 @@ public class DataSourceAspect {
 	        //Class<?>[] classz = target.getClass().getInterfaces();
 	        Class classz = target.getClass();
 	        
-	        //Class<?>[] parameterTypes = ((MethodSignature) point.getSignature()).getMethod().getParameterTypes();
+	        Class<?>[] parameterTypes = ((MethodSignature) point.getSignature()).getMethod().getParameterTypes();
 	        try {
-	            Method m = classz.getMethod(method);
-	        	//Method m = ((MethodSignature) point.getSignature()).getMethod();
+	            //Method m = classz.getMethod(method);
+	        	Method m = classz.getMethod(method,parameterTypes);
 	            if (m != null && m.isAnnotationPresent(DataSource.class)) {
 	                DataSource data = m.getAnnotation(DataSource.class);
 	                DynamicDataSourceHolder.putDataSource(data.value());

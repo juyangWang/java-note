@@ -1,6 +1,7 @@
 package com.fuyao.example.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,12 @@ public class UserServiceImpl implements UserService {
 	@DataSource("slave")
 	public List<User> find() {
 		System.out.println("------userService-------");
+		return userMapper.list();
+	}
+
+	//@DataSource("slave")
+	public List<User> find(Map<String, Object> param) {
+		System.out.println("------userService  param-------");
 		return userMapper.list();
 	}
 
