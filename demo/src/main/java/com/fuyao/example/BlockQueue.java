@@ -13,6 +13,7 @@ public class BlockQueue<E> {
 		System.out.println("add begin---------------"+msg);
 		while(queue.size() == max_count){
 			try {
+				System.out.println("add wait---------------"+msg);
 				this.wait();
 			} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -20,17 +21,20 @@ public class BlockQueue<E> {
 		}
 		System.out.println("add end---------------"+msg);
 		queue.add(msg);
+		this.notifyAll();
 	}
 
 	public synchronized E consume(){
 		while(queue.size() == 0){
 			try {
+				System.out.println("reduce  wait---------------");
 				this.wait();
 			} catch (InterruptedException e) {
 					e.printStackTrace();
 			}
 		}
 		E e = queue.remove(0);
+		System.out.println("reduce---------------"+e);
 		this.notifyAll();
 		return e;
 	}
@@ -41,10 +45,10 @@ public class BlockQueue<E> {
 
 			@Override
 			public void run() {
-				for(int i = 0;i<10;i++){
+				for(int i = 0;i<11;i++){
 					bq.produce("aa"+i);
 				}
-				bq.produce("123");
+				//bq.produce("123");
 			}
 			
 		};
@@ -58,10 +62,13 @@ public class BlockQueue<E> {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				bq.consume();
+				for(int i = 0;i<11;i++){
+					bq.consume();
+				}
 			}
 			
 		};
 		new Thread(t2).start();
+		
 	}
 }
