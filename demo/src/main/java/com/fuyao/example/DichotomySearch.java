@@ -29,6 +29,6 @@ public class DichotomySearch {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(DichotomySearch.getInstance().search(4));
+		System.out.println(DichotomySearch.getInstance().search(3));
 	}
 }
