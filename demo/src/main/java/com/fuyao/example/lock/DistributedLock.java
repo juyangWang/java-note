@@ -38,6 +38,7 @@ public class DistributedLock implements Lock,Watcher{
 	private CountDownLatch countDownLatch;
 	private int sessioTimeout = 30000;
 	private List<Exception> exceptionList = new ArrayList<Exception>();
+	
 	/**
 	 * 配置分布式锁
 	 * @param config 连接的URL
